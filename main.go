@@ -21,6 +21,8 @@ func main(){
 		ID: uuid.New().String(),
 		Nome: "Joao",
 
+
+		//Abrindo conexão com o banco
 	}
 	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/aula" )
 	if err != nil{
@@ -29,8 +31,11 @@ func main(){
 
 	log.Println("Conexão aberta com sql")
 
+
 	defer db.Close()
 
+
+	//Inserindo dados no banco
 	 Inserir_dados, err := db.Prepare("insert into aula (id, nome) values(?,?)")
 	 if err != nil{
 	 	log.Println(err)
